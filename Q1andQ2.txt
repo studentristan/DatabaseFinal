@@ -1,0 +1,15 @@
+-- Question 1
+-- These were really hard to wrap my head around for some reason. 
+
+SELECT Dictionary.language AS Language, COUNT(Dictionary.language) AS 'Number Of Occurences'
+FROM Dictionary
+LEFT JOIN Occurs ON Occurs.word = Dictionary.word
+GROUP BY Dictionary.language
+HAVING count(Dictionary.language) > 1000;
+
+-- Question 2
+-- Not as confident about this one, but am I close?
+SELECT Occurs.url AS Website, MAX(COUNT(Dictionary.language))
+FROM Occurs
+LEFT JOIN Dictionary ON Dictionary.word = Occurs.word 
+GROUP BY Occurs.url;
